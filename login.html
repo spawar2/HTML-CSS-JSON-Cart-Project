@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <script>
+      function login(){
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function(){
+          var fn = document.forms[0].firstName.value;
+          var ln = document.forms[0].lastName.value;
+
+          if(this.readyState == 4 &&  this.status == 200){
+            var names = JSON.parse(this.responseText);
+
+            for(var i = 0;i<names.length;i++){
+              if(names[i].firstName==fn && names[i].lastName==ln){
+
+                localStorage.setItem("firstName",fn);
+                localStorage.setItem("lastName",ln);
+                window.location = "index.html";
+                return;
+              }
+            }
+
+            alert("Incorrect");
+          }
+        };
+
+        xmlhttp.open("GET","logic.js",true);
+        xmlhttp.send();
+
+        return false;
+      }
+    </script>
+  </head>
+  <body>
+    <form action="login.html" method="post" onsubmit="return login();">
+      First Name: <input type="text" name="firstName"> <br>
+      Last Name: <input type="text" name="lastName"> <br>
+      <input type="submit">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<head>
+
+
+  <title>Amazon Foods</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="js/logic.js"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script>
+  jQuery(document).ready(function($){
+
+  $('.live-search-list li').each(function(){
+  $(this).attr('data-search-term', $(this).text().toLowerCase());
+  });
+
+  $('.live-search-box').on('keyup', function(){
+
+  var searchTerm = $(this).val().toLowerCase();
+
+      $('.live-search-list li').each(function(){
+
+          if ($(this).filter('[data-search-term *= ' + searchTerm + ']').length > 0 || searchTerm.length < 1) {
+              $(this).show();
+          } else {
+              $(this).hide();
+          }
+
+      });
+
+  });
+
+  });
+
+  </script>
+
+<style>
+
+
+  .live-search-list {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 1em;
+  background-color: #2c3e50;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+  }
+
+  .live-search-box {
+  width: 100%;
+  display: block;
+  padding: 1em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #3498db;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  }
+
+  .live-search-list li {
+  color: fff;
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+  }
+
+  .des {
+  color: fff;
+  list-style: none;
+  padding-top: 200px;
+  padding-left: 300px;
+  margin: 5px 0;
+  font-size:20px;
+  }
+
+
+	.product-name a p {display:none;}
+.product-name a:hover p {display:block;}
+
+</style>
+
+</head>
+
+
+
+<body>
+  <div id="site">
+  	<header id="masthead">
+  		<h1>Amazon Foods<span class="tagline">
+  			<a>
+  			  <img src="amazon.jpg" alt="Paris" style="width:150px">
+  			</a>
+  		</h1>
+  		<h2> Fresh foods delivered in one hour!</h2>
+  	</header>
+
+  	<div id="content">
+  		<div id="products">
+
+
+<input type="text" class="live-search-box" placeholder="search here" />
+
+
+
+<ul class="live-search-list">
+<li>
+  <div class="product-image">
+    <img src="images/7.jpg" alt="" />
+  </div>
+  <div class="product-description" data-name="Fruit #7" data-price="11">
+    <h3 class="product-name"> <a href="seven.html">Fruit #7 <p>Click for description</p> </a></h3>
+    <p class="product-price">&dollar; 9</p>
+    <form class="add-to-cart" action="cart.html" method="post">
+      <div>
+        <label for="qty-7">Quantity</label>
+        <input type="text" name="qty-7" id="qty-7" class="qty" value="1" />
+      </div>
+      <p><input type="submit" value="Add to cart" class="btn" /></p>
+    </form>
+  </div>
+</li>
+
+  <div class="des">
+    This is description of this item. Fresh from our organic gardens right to your home.
+  </div>
+
+  </ul>
+  </div>
+  </div>
+  </div>
+  </body>
+  </html>
